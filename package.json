@@ -1,0 +1,54 @@
+{
+  "name": "linkedin-jobs-api",
+  "version": "1.0.7",
+  "description": "advanced node.js package for getting job listings from LinkedIn",
+  "main": "index.js",
+  "scripts": {
+    "linkedin": "node search.js",
+    "google": "node google/google.js",
+
+    "organize": "node move-to-data.js",
+
+    "both": "npm run both:one",
+    "both:seq": "node google/google.js && node search.js",
+    "both:parallel": "concurrently -k -n GOOGLE,LINKEDIN -c cyan,magenta \"node google/google.js\" \"node search.js\"",
+
+    "merge": "node merge.js",
+    "both:one": "node google/google.js && node search.js && node move-to-data.js && node merge.js",
+
+    "deliver": "node deliver-to-n8n.js",
+    "both:deliver": "npm run both:one && node deliver-to-n8n.js",
+
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VishwaGauravIn/linkedin-jobs-api.git"
+  },
+  "keywords": [
+    "linkedin",
+    "linkedin-jobs",
+    "jobs",
+    "linkedin-jobs-api",
+    "linkedin-api",
+    "api"
+  ],
+  "author": "VishwaGauravIn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VishwaGauravIn/linkedin-jobs-api/issues"
+  },
+  "homepage": "https://github.com/VishwaGauravIn/linkedin-jobs-api#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.1.2",
+    "dotenv": "^17.2.1",
+    "@json2csv/plainjs": "^6.0.0",
+    "csv-parse": "^5.5.6",
+    "random-useragent": "^0.5.0",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

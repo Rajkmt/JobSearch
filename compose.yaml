@@ -1,0 +1,18 @@
+services:
+  jobsearch:
+    # Build the image from the Dockerfile in this folder
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Tag the built image so it's easy to re-use
+    image: jobsearch:latest
+    container_name: jobsearch
+    working_dir: /app
+
+    # Make outputs & .env persistent from your Mac
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env:ro
+
+    # Use the CMD from the Dockerfile (npm run both:deliver)
+    restart: "no"
