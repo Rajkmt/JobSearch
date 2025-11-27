@@ -1,4 +1,4 @@
-
+Automated Job Search Aggregator built with Node.js and Docker. This project collects job listings from LinkedIn and Google using Google CSE, processes and merges results, and delivers them to an N8N webhook. Includes CSV export for analysis. Portable via Docker for easy deployment on any system.
 
 ## Features
 
