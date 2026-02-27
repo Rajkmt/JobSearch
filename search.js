@@ -347,7 +347,8 @@ async function main() {
       contact_emails: emails,
       contact_phones: phones,
       skills,
-      description: d
+      description: d,
+      source: 'linkedin'
     };
   });
 
