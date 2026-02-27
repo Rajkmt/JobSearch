@@ -348,7 +348,8 @@ async function main() {
       contact_phones: phones,
       skills,
       description: d,
-      source: 'linkedin'
+      source: 'linkedin',
+      unique_id: `linkedin__${slug(j.company)}__${slug(j.position)}__${slug(j.location)}__${extractJobId(j.jobUrl) || canonicalUrl(j.jobUrl)}`
     };
   });
 
