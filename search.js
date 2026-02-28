@@ -349,7 +349,8 @@ async function main() {
       skills,
       description: d,
       source: 'linkedin',
-      unique_id: `linkedin__${slug(j.company)}__${slug(j.position)}__${slug(j.location)}__${extractJobId(j.jobUrl) || canonicalUrl(j.jobUrl)}`
+      unique_id: `linkedin__${slug(j.company)}__${slug(j.position)}__${slug(j.location)}__${extractJobId(j.jobUrl) || canonicalUrl(j.jobUrl)}`,
+      scraped_at: new Date().toISOString()
     };
   });
 
