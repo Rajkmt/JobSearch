@@ -380,7 +380,16 @@ async function main() {
   }
 }
 
+const fsSync = require('fs');
+const ERROR_LOG_FILE = 'jobsearch-errors.log';
+
+function logError(err) {
+  const msg = `[${new Date().toISOString()}] ${err instanceof Error ? err.stack || err.message : JSON.stringify(err)}\n`;
+  fsSync.appendFileSync(ERROR_LOG_FILE, msg, {encoding:'utf8'});
+}
+
 main().catch(err => {
   console.error("Fatal error:", err);
+  logError(err);
   process.exit(1);
 });
